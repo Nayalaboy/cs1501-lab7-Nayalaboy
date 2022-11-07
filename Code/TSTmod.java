@@ -88,7 +88,7 @@ public class TSTmod<Value> {
      *     {@code false} otherwise
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public boolean contains(String key) {
+    public boolean contains(StringBuilder key) {
         if (key == null) {
             throw new IllegalArgumentException("argument to contains() is null");
         }
@@ -102,7 +102,7 @@ public class TSTmod<Value> {
      *     and {@code null} if the key is not in the symbol table
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public Value get(String key) {
+    public Value get(StringBuilder key) {
         if (key == null) {
             throw new IllegalArgumentException("calls get() with null argument");
         }
@@ -113,7 +113,7 @@ public class TSTmod<Value> {
     }
 
     // return subtrie corresponding to given key
-    private Node<Value> get(Node<Value> x, String key, int d) {
+    private Node<Value> get(Node<Value> x, StringBuilder key, int d) {
         if (x == null) return null;
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         char c = key.charAt(d);
@@ -131,7 +131,7 @@ public class TSTmod<Value> {
      * @param val the value
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public void put(String key, Value val) {
+    public void put(StringBuilder key, Value val) {
         if (key == null) {
             throw new IllegalArgumentException("calls put() with null key");
         }
@@ -139,7 +139,7 @@ public class TSTmod<Value> {
         root = put(root, key, val, 0);
     }
 
-    private Node<Value> put(Node<Value> x, String key, Value val, int d) {
+    private Node<Value> put(Node<Value> x, StringBuilder key, Value val, int d) {
         char c = key.charAt(d);
         if (x == null) {
             x = new Node<Value>();
